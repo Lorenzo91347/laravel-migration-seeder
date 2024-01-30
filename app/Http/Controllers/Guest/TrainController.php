@@ -3,9 +3,15 @@
 namespace App\Http\Controllers\Guest;
 
 use App\Http\Controllers\Controller;
+use App\Models\Train;
 use Illuminate\Http\Request;
 
 class TrainController extends Controller
 {
-    //
+public function index(){
+
+    $trains = Train::whereDate('start_date',now())->get();
+    return view('welcome',compact('trains'));
+}
+
 }
